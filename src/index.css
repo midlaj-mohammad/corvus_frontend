@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+@layer utilities {
+  .duration-high {
+    @apply transition-all duration-300 ease-in-out;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spin {
+  animation: spin 40s linear infinite;
+}
+
+body{
+  font-family: "Noto Sans", serif;
+  background-color: white !important;
+  color: black !important;
+
+}
+.nav-ul{
+  font-size: 13px;;
+}
+.container{
+  max-width: 1280px !important;
+  margin: auto !important;
+}
+/* .categories-list{
+  border: 1px solid #ccc;;
+} */
+ .section{
+  padding-top: 50px;
+  padding-bottom: 50px;
+ }
+ .banner-sec{
+  padding-top: 120px !important;
+
+ }
+
+ .sidebar {
+  position: relative;
+  height: 100vh;
+  background-color: white;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid #d1d5db;
+  transition: all 0.3s ease-in-out;
+  z-index: 40;
+}
+
+/* Default: Show sidebar */
+.sidebar {
+  width: 18rem; /* 72px */
+  left: 0;
+}
+
+/* Hide sidebar in mobile view by default */
+@media (max-width: 560px) {
+  .sidebar {
+    width: 18rem; /* Sidebar width */
+    left: -18rem; /* Hide it */
+    position: fixed;
+  }
+.admin-welcom{
+  margin-left: 55px;
+  margin-top: 10px;
+}
+  /* Show sidebar when open */
+  .sidebar.open {
+    left: 0;
+  }
+}
