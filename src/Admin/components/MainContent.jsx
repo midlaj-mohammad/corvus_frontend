@@ -2,10 +2,10 @@ import { TrendingUp, People, ShoppingCart, Chat } from "@mui/icons-material";
 
 const MainContent = () => {
   const cards = [
-    { title: "Weekly Sales", value: "714k", percent: "+2.6%", icon: <TrendingUp />, bg: "from-blue-500 to-blue-300", link: "/sales" },
-    { title: "New Users", value: "1.35m", percent: "-0.1%", icon: <People />, bg: "from-purple-500 to-purple-300", link: "/users" },
-    { title: "Purchase Orders", value: "1.72m", percent: "+2.8%", icon: <ShoppingCart />, bg: "from-yellow-500 to-yellow-300", link: "/orders" },
-    { title: "Messages", value: "234", percent: "+3.6%", icon: <Chat />, bg: "from-red-500 to-red-300", link: "/messages" },
+    { title: "Users", value: "714k", percent: "+2.6%", icon: <TrendingUp />, bg: "from-blue-500 to-blue-300", link: "/sales" },
+    { title: "Workers", value: "1.35m", percent: "-0.1%", icon: <People />, bg: "from-purple-500 to-purple-300", link: "/users" },
+    { title: "Booking", value: "1.72m", percent: "+2.8%", icon: <ShoppingCart />, bg: "from-yellow-500 to-yellow-300", link: "/orders" },
+    { title: "Services", value: "234", percent: "+3.6%", icon: <Chat />, bg: "from-red-500 to-red-300", link: "/messages" },
   ];
 
   return (

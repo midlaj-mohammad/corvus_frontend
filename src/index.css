@@ -70,7 +70,21 @@ body{
   left: 0;
 }
 
+
 /* Hide sidebar in mobile view by default */
+
+/* Optional custom CSS for finer control */
+.tablediv{
+  width: 100% !important;
+  overflow-x: scroll !important;
+}
+@media (max-width: 760px) {
+  .tablediv{
+    width: 700px !important;
+    overflow-x: scroll !important;
+  }
+}
+
 @media (max-width: 560px) {
   .sidebar {
     width: 18rem; /* Sidebar width */
@@ -84,5 +98,15 @@ body{
   /* Show sidebar when open */
   .sidebar.open {
     left: 0;
+  }
+  .tablediv{
+    width: 500px !important;
+    overflow-x: scroll !important;
+  }
+}
+@media (max-width: 460px) {
+  .tablediv{
+    width: 340px !important;
+    overflow-x: scroll !important;
   }
 }

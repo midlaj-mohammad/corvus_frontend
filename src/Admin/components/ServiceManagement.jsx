@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Typography, Box, Card, CardContent, CardActions, CardMedia, IconButton } from "@mui/material";
+import { Button, Typography, Box, Card, CardContent, CardActions, CardMedia, IconButton, keyframes } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import NewServiceModal from "./NewServiceModal";
 import { useNavigate } from "react-router-dom";
@@ -19,6 +19,8 @@ const ServiceManagement = () => {
     setOpen(false);
     setEditingService(null);
   };
+
+
 
   const handleAddOrUpdateService = (newService) => {
     if (editingService) {
@@ -58,9 +60,9 @@ const ServiceManagement = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1 p-4">
         {services.length > 0 ? (
           services.map((service, index) => (
-            <Card key={index} sx={{ maxWidth: 345, boxShadow: 3 }}>
+            <Card  key={index} sx={{ maxWidth: 345, boxShadow: 3 }} >
               {service.image && (
-                <CardMedia
+                <CardMedia onClick={()=>{navigate('/admin/subservice')}}
                   component="img"
                   height="180"
                   image={service.image} // Display uploaded image
@@ -78,7 +80,7 @@ const ServiceManagement = () => {
                 </div>
 
                 {/* Rounded Black + Icon Button */}
-                <IconButton sx={{ padding: "2px 14px", backgroundColor: "black", color: "white", borderRadius: "50%", "&:hover": { backgroundColor: "#333" } }}>
+                <IconButton onClick={()=>{navigate('/admin/subservice')}} sx={{ padding: "2px 14px", backgroundColor: "black", color: "white", borderRadius: "50%", "&:hover": { backgroundColor: "#333" } }}>
                   +
                 </IconButton>
               </CardActions>

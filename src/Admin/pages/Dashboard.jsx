@@ -14,18 +14,11 @@ const Dashboard = () => {
 
   return (
     <div className="flex">
-      <SideBar setActiveSection={setActiveSection} /> {/* Pass setActiveSection */}
+      {/* <SideBar setActiveSection={setActiveSection} />  */}
       <div className="flex-1">
-        <Navbar />
+        {/* <Navbar /> */}
         
-        {/* Conditionally Render Content */}
-        {activeSection === "dashboard" && <MainContent />}
-        {activeSection === "service" && <ServiceManagement />}
-        {activeSection === "subservice" && <SubServices />}
-        {activeSection === "booking" && <BookingManagement />}
-        {activeSection === "worker" && <WorkerManagement />}
-        {activeSection === "user" && <UserManagement />}
-        {activeSection === "payments" && <PaymentsandTransaction />}
+      
       </div>
     </div>
   );
