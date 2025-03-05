@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Button,
   Card,
@@ -14,45 +14,66 @@ import {
   Link,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { AxiosInstanse } from '../../Api/axios';
 
-const bookings = [
-  {
-    id: 1001,
-    name: 'Adam Trantow',
-    phone: '123-456-7890',
-    date: '2025-02-20',
-    amount: '$100',
-    service: 'Cleaning home cleaning, Bathroom cleaning',
-    status: 'Completed',
-  },
-  {
-    id: 1002,
-    name: 'Angel Rolfson-Kulas',
-    phone: '234-567-8901',
-    date: '2025-02-21',
-    amount: '$150',
-    service: 'Repair',
-    status: 'Pending',
-  },
-  {
-    id: 1003,
-    name: 'John Doe',
-    phone: '111-222-3333',
-    date: '2025-02-22',
-    amount: '$200',
-    service: 'Gardening',
-    status: 'In Progress',
-  },
-];
+// const bookings = [
+//   {
+//     id: 1001,
+//     name: 'Adam Trantow',
+//     phone: '123-456-7890',
+//     date: '2025-02-20',
+//     amount: '$100',
+//     service: 'Cleaning home cleaning, Bathroom cleaning',
+//     status: 'Completed',
+//   },
+//   {
+//     id: 1002,
+//     name: 'Angel Rolfson-Kulas',
+//     phone: '234-567-8901',
+//     date: '2025-02-21',
+//     amount: '$150',
+//     service: 'Repair',
+//     status: 'Pending',
+//   },
+//   {
+//     id: 1003,
+//     name: 'John Doe',
+//     phone: '111-222-3333',
+//     date: '2025-02-22',
+//     amount: '$200',
+//     service: 'Gardening',
+//     status: 'In Progress',
+//   },
+// ];
+
+
 
 const BookingManagement = () => {
+
+
   const [selectedBookings, setSelectedBookings] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
 
+  const [Bookings, setBookings] = useState([]);
+
+  const fetchBookings = async ()=>{
+    const responds = await AxiosInstanse.get("/Admin/getAllBookings")
+    console.log(responds.data);
+    
+  }
+
+  useEffect(()=>{
+    fetchBookings()
+  },[]);
+
+
+
+
+
   const handleSelectAll = (e) => {
     if (e.target.checked) {
-      setSelectedBookings(bookings.map((booking) => booking.id));
+      setSelectedBookings(Bookings.map((booking) => booking.id));
     } else {
       setSelectedBookings([]);
     }
@@ -64,7 +85,7 @@ const BookingManagement = () => {
     );
   };
 
-  const filteredBookings = bookings.filter((booking) =>
+  const filteredBookings = Bookings.filter((booking) =>
     booking.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -116,7 +137,7 @@ const BookingManagement = () => {
                   <TableRow>
                     <TableCell padding="checkbox">
                       <Checkbox
-                        checked={selectedBookings.length === bookings.length}
+                        checked={selectedBookings.length === Bookings.length}
                         onChange={handleSelectAll}
                       />
                     </TableCell>
@@ -125,7 +146,7 @@ const BookingManagement = () => {
                     <TableCell>Phone</TableCell>
                     <TableCell>Date</TableCell>
                     <TableCell>Amount</TableCell>
-                    <TableCell>Service</TableCell>
+                    <TableCell>Jobs</TableCell>
                     <TableCell>Status</TableCell>
                     <TableCell>Assignee</TableCell>
                   </TableRow>

@@ -1,9 +1,6 @@
 import axios from "axios";
 
-const AxiosInstanse = axios.create({
-    baseURL:import.meta.env.VITE_BASE_URL,
-    withCredentials:true
-})
+export const AxiosInstanse = axios.create({
+  baseURL: import.meta.env.VITE_BASE_URL
 
-
-export {AxiosInstanse}
+});

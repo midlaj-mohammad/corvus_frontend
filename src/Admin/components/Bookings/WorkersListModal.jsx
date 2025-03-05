@@ -15,7 +15,9 @@ import {
   IconButton,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { AxiosInstanse } from "../../../Api/axios";
+import axios from "axios";
+import {AxiosInstanse} from "../../../Api/axios.js"
+
 
 // const mockWorkers = [
 //   { id: 1, name: 'John Doe', phone: '123-456-7890', location: 'New York', services: 'Plumbing' },
@@ -32,13 +34,16 @@ const WorkersListModal = ({ open, handleClose, handleAssignWorker }) => {
 const [mockWorkers, setmockWorkers] = useState([]);
 
 const fetchWorkers = async () => {
-  const responds = await AxiosInstanse.get("Admin/getAllEmployeess");
-  console.log(responds.data);
+  const responds = await AxiosInstanse.get("/Admin/getAllEmployeess");
+  setmockWorkers(responds.data)
 };
 
 useEffect(() => {
   fetchWorkers();
 }, []);
+
+console.log(mockWorkers);
+
 
   return (
     <Modal open={open} onClose={handleClose}>
@@ -88,17 +93,20 @@ useEffect(() => {
                 <TableCell>Phone</TableCell>
                 <TableCell>Location</TableCell>
                 <TableCell>Services</TableCell>
+                <TableCell>Experiance</TableCell>
                 <TableCell>Action</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {mockWorkers && mockWorkers.length > 0
                 ? mockWorkers.map((worker) => (
-                    <TableRow key={worker.id} sx={{ height: 50 }}>
-                      <TableCell>{worker.name}</TableCell>
-                      <TableCell>{worker.phone}</TableCell>
-                      <TableCell>{worker.location}</TableCell>
-                      <TableCell>{worker.services}</TableCell>
+                    <TableRow key={worker.employeesId} sx={{ height: 50 }}>
+                      <TableCell>{worker.employeesName}</TableCell>
+                      <TableCell>{worker.employeesMob   }</TableCell>
+                      <TableCell>{worker.city }</TableCell>
+                      <TableCell>{worker.experience }</TableCell>
+
+                      <TableCell>{worker.jobs_id}</TableCell>
                       <TableCell>
                         <Button
                           variant="contained"
